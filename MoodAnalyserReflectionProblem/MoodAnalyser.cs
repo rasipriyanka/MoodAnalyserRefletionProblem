@@ -7,11 +7,11 @@ namespace MoodAnalyserReflectionProblem
     public class MoodAnalyser
     {
         public string message;
-        public MoodAnalyser(string message) // Creating a constructer 
+        public MoodAnalyser(string message) //Creating a constructer 
         {
             this.message = message;
         }
-        public string AnalyseMood() //this method is used for to analyse mood of user by using Exception 
+        public string AnalyseMood() //this mothod is used for to analyse mood of user by using Exception 
         {
             try
             {
@@ -38,5 +38,6 @@ namespace MoodAnalyserReflectionProblem
         }
     }
 }
+
 
    

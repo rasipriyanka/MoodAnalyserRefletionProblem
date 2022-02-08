@@ -29,7 +29,22 @@ namespace TestProject1
                 Assert.AreEqual(expected, ex.Message);
             }
         }
+        [TestMethod]
+        public void GivenImproperConstructerToThrowCustomException() //this method for to catch the custom reflection
+                                                                     //if the constructer  name was different
+        {
+            string expected = "Constructer is not found";
+            try
+            {
+                object moodAnalyseObject = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserReflection.MoodAnalyser", "MoodAnaly", "happy");
+            }
+            catch (MoodAnalyzerExcep ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
     }
 }
+
 
 
