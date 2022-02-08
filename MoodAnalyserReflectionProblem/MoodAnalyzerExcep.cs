@@ -1,4 +1,5 @@
-﻿using System;
+﻿//--Dependencies---//
+using System;
 using System.Collections.Generic;
 using System.Text;
 //-----Namespace----//
