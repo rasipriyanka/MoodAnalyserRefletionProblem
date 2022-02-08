@@ -7,6 +7,7 @@ namespace TestProject1
     public class UnitTest1
     {
         [TestMethod]
+        
         public void GiveMoodAnalyseClassNameShouldReturnMoodAnalyseObject()
         {
             //string message = null;
@@ -28,7 +29,20 @@ namespace TestProject1
                 Assert.AreEqual(expected, ex.Message);
             }
         }
-
+        [TestMethod]
+        public void GivenImproperConstructerToThrowCustomException() //this method for to catch the custom reflection
+                                                                     //if the constructer  name was different
+        {
+            string expected = "Constructer is not found";
+            try
+            {
+                object moodAnalyseObject = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserReflection.MoodAnalyser", "MoodAnaly");
+            }
+            catch (MoodAnalyzerExcep ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
     }
 }
 
