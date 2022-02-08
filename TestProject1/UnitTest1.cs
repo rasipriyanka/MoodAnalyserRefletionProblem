@@ -7,7 +7,6 @@ namespace TestProject1
     public class UnitTest1
     {
         [TestMethod]
-
         public void GiveMoodAnalyseClassNameShouldReturnMoodAnalyseObject()
         {
             string message = "happy";
@@ -16,6 +15,21 @@ namespace TestProject1
             object obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserReflection.MoodAnalyser", "MoodAnalyser", "happy");
             exepected.Equals(obj);
         }
+        [TestMethod]
+        public void GivenImproperClassToThrowCustomException() //this method for to catch the custom reflection
+                                                               //if the class name was different
+        {
+            string expected = "Class not found";
+            try
+            {
+                object moodAnalyseObject = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserReflection.MoodAnalys", "MoodAnalyser", "happy");
+            }
+            catch (MoodAnalyzerExcep ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
     }
 }
+
 
