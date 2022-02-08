@@ -16,8 +16,8 @@ namespace MoodAnalyserReflectionProblem
             NO_SUCH_CLASS,
             NO_SUCH_METHOD
         }
-        public MoodAnalyzerExcep(ExceptionType type, string message) : base(message) //this method using for catching the Exception
-        {
+        public MoodAnalyzerExcep(ExceptionType type, string message) : base(message)
+        { 
             this.type = type;
         }
     }

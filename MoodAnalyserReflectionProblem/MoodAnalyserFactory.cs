@@ -10,20 +10,26 @@ namespace MoodAnalyserReflectionProblem
 {
     public class MoodAnalyserFactory
     {
-        public static string CreateMoodAnalyse(string message, string methodName)
+         public static object CreateMoodAnalyse(string className,string constructerName)
         {
-            try
+            string pattern = @"."+constructerName+"$";
+            Match result = Regex.Match(className, pattern);
+            if (result.Success)
             {
-                Type type = Type.GetType("MoodAnalyserReflection.MoodAnalyser");
-                object moodAnalyserObject = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserReflection.MoodAnalyser", "MoodAnalyser");
-                MethodInfo method = type.GetMethod(methodName);
-                object mood = method.Invoke(moodAnalyserObject, null);
-                return mood.ToString();
+                try
+                {
+                    Assembly executing = Assembly.GetExecutingAssembly();
+                    Type moodAnalyseType=executing.GetType(className);
+                    return Activator.CreateInstance(moodAnalyseType);
+                }
+                catch (ArgumentNullException)
+                {
+                    throw new MoodAnalyzerExcep(MoodAnalyzerExcep.ExceptionType.NO_SUCH_CLASS, "Class not found");    
+                }
             }
-            catch (NullReferenceException)
+            else
             {
-                throw new MoodAnalyzerExcep(MoodAnalyzerExcep.ExceptionType.NO_SUCH_METHOD, "Method is not found");
-
+                throw new MoodAnalyzerExcep(MoodAnalyzerExcep.ExceptionType.NO_SUCH_METHOD, "Constructer is not found");
             }
         }
     }

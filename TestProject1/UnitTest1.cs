@@ -9,9 +9,9 @@ namespace TestProject1
         [TestMethod]
         public void TestMethod1()
         {
-            string exepected = "happy";
-            string obj = MoodAnalyserFactory.CreateMoodAnalyse("happy", "AnalyseMood");
-            Assert.AreEqual(exepected, obj);
+            object exepected = new MoodAnalyser();
+            object obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserReflection.MoodAnalyser", "MoodAnalyser");
+            exepected.Equals(obj);
         }
     }
 }
