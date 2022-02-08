@@ -10,21 +10,21 @@ namespace MoodAnalyserReflectionProblem
 {
     public class MoodAnalyserFactory
     {
-         public static object CreateMoodAnalyse(string className,string constructerName)
+        public static object CreateMoodAnalyse(string className, string constructerName)
         {
-            string pattern = @"."+constructerName+"$";
+            string pattern = @"." + constructerName + "$";
             Match result = Regex.Match(className, pattern);
             if (result.Success)
             {
                 try
                 {
                     Assembly executing = Assembly.GetExecutingAssembly();
-                    Type moodAnalyseType=executing.GetType(className);
+                    Type moodAnalyseType = executing.GetType(className);
                     return Activator.CreateInstance(moodAnalyseType);
                 }
-                catch (ArgumentNullException)
+                catch (ArgumentNullException ex)
                 {
-                    throw new MoodAnalyzerExcep(MoodAnalyzerExcep.ExceptionType.NO_SUCH_CLASS, "Class not found");    
+                    throw new MoodAnalyzerExcep(MoodAnalyzerExcep.ExceptionType.NO_SUCH_CLASS, "Class not found");
                 }
             }
             else
@@ -34,4 +34,5 @@ namespace MoodAnalyserReflectionProblem
         }
     }
 }
+
 

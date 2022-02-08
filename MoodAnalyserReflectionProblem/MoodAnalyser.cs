@@ -12,7 +12,7 @@ namespace MoodAnalyserReflectionProblem
             string message = "string>null";
             this.message = message;
         }
-        public string AnalyseMood(string message)//this mothod is used for to analyse mood of user by using Exception
+        public string AnalyseMood(string message)//this method is used for to analyse mood of user by using Exception
         {
             this.message = message;
             try
