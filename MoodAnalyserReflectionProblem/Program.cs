@@ -8,7 +8,7 @@ namespace MoodAnalyserReflectionProblem
         {
             Console.WriteLine("Welcome to reflection");
 
-            MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserReflection.MoodAnalyser", "MoodAnalyser");
+            MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserReflection.MoodAnalyser", "MoodAnalyser", "happy");
         }
     }
 }
